@@ -32,15 +32,18 @@ headers: .header
 	#  mv "$TMP" "$FILE"
 	#done
 
-docs: readme.md .header
+docs: readme.md license.md contributing.md .header
 
 doc/images/furore.png:
 	cp .admin/images/furore.png doc/images/
 
-doc/images/riot.png:
-	cp .admin/images/riot.png doc/images/
+doc/images/riotim.png:
+	cp .admin/images/riotim.png doc/images/
 
-readme.md: doc/images/furore.png doc/images/riot.png
+doc/images/mavencentral.png:
+	cp .admin/images/mavencentral.png doc/images/
+
+readme.md: doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
 	cat .admin/tmpl/readme.md | envsubst | tr '¶' '\n' > readme.md
 
 license.md:

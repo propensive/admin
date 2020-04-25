@@ -1,13 +1,10 @@
-![${TITLE} logo](/doc/images/github.png)
+<a href="https://furore.dev/propensive/${ID}"><img src="/doc/images/furore.png" style="vertical-align:middle" valign="middle"></a>&nbsp;&nbsp;<a href="https://furore.dev/propensive/${ID}">__Develop ${TITLE} with Fury__ </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://riot.im/app/#/room/#propensive.${ID}:matrix.org"><img src="/doc/images/riotim.png" style="vertical-arign:middle" valign="middle"></a>&nbsp;&nbsp;<a href="https://riot.im/app/#/room/#propensive.${ID}:matrix.org">__Discuss ${TITLE} on Riot__</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://search.maven.org/search?q=g:com.propensive%20AND%20a:${ID}_2.12"><img src="/doc/images/mavencentral.png" style="vertical-arign:middle" valign="middle"></a>&nbsp;&nbsp;<a href="https://search.maven.org/search?q=g:com.propensive%20AND%20a:${ID}_2.12">__Get ${TITLE} from Maven Central__</a>
 
-[![${TITLE} chat on Riot](/doc/images/riot.png)](https://riot.im/app/#/room/#propensive.${ID}:matrix.org) Chat about ${TITLE} on Riot
-[![${TITLE} on Furore](/doc/images/furore.png)](https://furore.dev/propensive/${ID}) Develop ${TITLE} with Fury
+<img src="/doc/images/github.png" valign="middle">
 
 # ${TITLE}
 
-## Introduction
-
-This is the repository for ${TITLE}. ${INTRO}
+${INTRO}
 
 ## Features
 
@@ -19,24 +16,37 @@ ${BASICS}
 
 ## Availability
 
-${TITLE}´s source is available on GitHub, and may be build with [Fury](https://github.com/propensive/fury) by
+${TITLE}&rsquo;s source is available on GitHub, and may be built with [Fury](https://github.com/propensive/fury) by
 cloning the layer `propensive/${ID}`.
 ```
 fury layer clone -i propensive/${ID}
 ```
-
+or imported into an existing layer with,
+```
+fury layer import -i propensive/${ID}
+```
 A binary will be made available on Maven Central.
 
 ## Contributing
 
-Contributors to ${TITLE} are welcome and encouraged. Contributors who follow the instructions in the
-[Contributing Guide](/contributing.md) can expect to receive support from the author.
+Contributors to ${TITLE} are welcome and encouraged. New contributors may like to look for issues marked
+<a href="https://github.com/propensive/${ID}/labels/good%20first%20issue"><img alt="label: good first issue"
+src="https://img.shields.io/badge/-good%20first%20issue-67b6d0.svg" valign="middle"></a>.
+
+We suggest that all contributors read the [Contributing Guide](/contributing.md) to make the process of
+contributing to ${TITLE} easier.
+
+Please __do not__ contact project maintainers privately with questions, as other users cannot then benefit from
+the answers.
 
 ## Author
 
 ${TITLE} was designed and developed by [Jon Pretty](https://twitter.com/propensive), and commercial support and
-training is available from [Propensive OÜ](https://propensive.com/).
+training is available from [Propensive O&Uuml;](https://propensive.com/).
+
+${THANKS}
 
 ## License
 
-${TITLE} is made available under the [Apache 2.0 License](/license.md).
+${TITLE} is copyright &copy; ${START}-${YEAR} Jon Pretty & Propensive O&Uuml;, and is made available under the
+[Apache 2.0 License](/license.md).
