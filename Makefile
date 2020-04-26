@@ -22,18 +22,21 @@ headers: .header
 docs: clean readme.md license.md contributing.md fury Makefile .gitignore
 
 clean:
-	rm readme.md license.md contributing.md fury Makefile .gitignore
+	rm -f readme.md license.md contributing.md fury .gitignore
 
 fury:
 	ipfs cat $(LAUNCHER) > fury
 
 doc/images/furore.png:
+	mkdir -p doc/images
 	cp .admin/images/furore.png doc/images/
 
 doc/images/riotim.png:
+	mkdir -p doc/images
 	cp .admin/images/riotim.png doc/images/
 
 doc/images/mavencentral.png:
+	mkdir -p doc/images
 	cp .admin/images/mavencentral.png doc/images/
 
 readme.md: doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
