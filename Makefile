@@ -1,5 +1,6 @@
 
 .EXPORT_ALL_VARIABLES:
+LAUNCHER = Qmf4fcS6XzTq4zHwqgKDy5TbN94kMdXch9uA5qhTpnQzKY
 TITLE = $(shell cat doc/title)
 ID = $(shell cat doc/id)
 START = $(shell cat doc/start)
@@ -9,30 +10,22 @@ INTRO = $(shell cat doc/intro)
 YEAR = $(shell date "+%y")
 THANKS = $(shell cat doc/thanks 2> /dev/null || echo '')
 VERSION = $(shell git describe --tags 2> /dev/null)
+TMP = .tmp.scala
 
 headers: .header
-	#YEAR="$(date +%y)"
-	#VERSION="$(cat .version | head -n1)"
-	#TMP=".tmp.scala"
-	#HEADER=".header"
+	@for file in $(shell find src -name '*.scala') ; do \
+	  cat .header > $(TMP) ; \
+	  sed '/\(package\|object\|import\)/,$$!d' "$$file" >> "$(TMP)" ; \
+	  mv "$(TMP)" "$$file" ; \
+	done && rm .header
 
-	#if [[ "$VERSION" == "" ]]; then
-	#  echo 'Usage: revise <version'
-	#  exit 1
-	#fi
+docs: clean readme.md license.md contributing.md fury Makefile .gitignore
 
-	#if [[ ! -f "$HEADER" ]]; then
-	#  echo 'The file .header does not exist.'
-	#  exit 1
-	#fi
+clean:
+	rm readme.md license.md contributing.md fury Makefile .gitignore
 
-	#for FILE in $(find src -name '*.scala'); do
-	#  sed 's/%VERSION%/'"$VERSION"'/g' "$HEADER" | sed 's/%YEAR%/'$YEAR'/g' > "$TMP"
-	#  sed '/\(package\|object\|import\)/,$!d' "$FILE" >> "$TMP"
-	#  mv "$TMP" "$FILE"
-	#done
-
-docs: readme.md license.md contributing.md .header
+fury:
+	ipfs cat $(LAUNCHER) > fury
 
 doc/images/furore.png:
 	cp .admin/images/furore.png doc/images/
@@ -46,6 +39,12 @@ doc/images/mavencentral.png:
 readme.md: doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
 	cat .admin/tmpl/readme.md | envsubst | tr '¶' '\n' > readme.md
 
+.gitignore:
+	cp .admin/tmpl/.gitignore .gitignore
+
+Makefile:
+	echo "include .admin/Makefile" > Makefile
+
 license.md:
 	cp .admin/tmpl/license.md license.md
 
@@ -53,6 +52,7 @@ contributing.md:
 	cat .admin/tmpl/contributing.md | envsubst > contributing.md
 
 contributors.md:
+	git shortlog -sn > contributors.md
 
 .header:
 	cat .admin/tmpl/.header | envsubst > .header
