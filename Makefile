@@ -39,7 +39,7 @@ doc/images/mavencentral.png:
 	mkdir -p doc/images
 	cp .admin/images/mavencentral.png doc/images/
 
-readme.md: doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
+readme.md: doc/images doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
 	cat .admin/tmpl/readme.md | envsubst | tr '¶' '\n' > readme.md
 
 .gitignore:
