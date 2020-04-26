@@ -28,21 +28,23 @@ clean:
 
 .github/workflows/main.yml:
 	cp .admin/tmpl/github.yml .github/workflows/main.yml
-
 fury:
 	ipfs cat $(LAUNCHER) > fury
 	chmod +x fury
 
 doc/images/furore.png:
+	mkdir -p doc/images
 	cp .admin/images/furore.png doc/images/
 
 doc/images/riotim.png:
+	mkdir -p doc/images
 	cp .admin/images/riotim.png doc/images/
 
 doc/images/mavencentral.png:
+	mkdir -p doc/images
 	cp .admin/images/mavencentral.png doc/images/
 
-readme.md: doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
+readme.md: doc/images doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
 	cat .admin/tmpl/readme.md | envsubst | tr '¶' '\n' > readme.md
 
 contributing.md:
