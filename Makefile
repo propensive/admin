@@ -9,8 +9,10 @@ FEATURES = $(shell cat doc/features | tr '\n' '¶')
 INTRO = $(shell cat doc/intro)
 YEAR = $(shell date "+%y")
 THANKS = $(shell cat doc/thanks 2> /dev/null || echo '')
-VERSION = $(shell git describe --tags 2> /dev/null)
+VERSION = $(shell git describe --tags --abbrev=0 2> /dev/null)
 TMP = .tmp.scala
+
+SCALA = "2.12"
 
 headers: .header
 	@for file in $(shell find src -name '*.scala') ; do \
@@ -19,13 +21,17 @@ headers: .header
 	  mv "$(TMP)" "$$file" ; \
 	done && rm .header
 
-docs: clean readme.md license.md contributing.md fury Makefile .gitignore
+docs: clean readme.md license.md contributing.md fury Makefile .gitignore .github/workflows/main.yml contributing.md
 
 clean:
-	rm readme.md license.md contributing.md fury Makefile .gitignore
+	rm -f readme.md license.md contributing.md fury .gitignore .github/workflows/main.yml
+
+.github/workflows/main.yml:
+	cp .admin/tmpl/github.yml .github/workflows/main.yml
 
 fury:
 	ipfs cat $(LAUNCHER) > fury
+	chmod +x fury
 
 doc/images/furore.png:
 	cp .admin/images/furore.png doc/images/
@@ -39,6 +45,9 @@ doc/images/mavencentral.png:
 readme.md: doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
 	cat .admin/tmpl/readme.md | envsubst | tr '¶' '\n' > readme.md
 
+contributing.md:
+	cat .admin/tmpl/contributing.md | envsubst | tr '¶' '\n' > contributing.md
+
 .gitignore:
 	cp .admin/tmpl/.gitignore .gitignore
 
@@ -48,11 +57,42 @@ Makefile:
 license.md:
 	cp .admin/tmpl/license.md license.md
 
-contributing.md:
-	cat .admin/tmpl/contributing.md | envsubst > contributing.md
-
 contributors.md:
 	git shortlog -sn > contributors.md
+
+publish: pub/propensive
+	
+
+pub/propensive:
+	rm -f .dependencies
+	for mod in $(shell fury module list --project $(ID) --raw | sed 's/\x1b\[[0-9;]*m//g'); do \
+	  export ARTIFACT="$(ID)-$${mod}_$(SCALA)" ; \
+	  export F="$${ARTIFACT}-$(VERSION)" ; \
+	  export D="pub/propensive/$$ARTIFACT/$(VERSION)" ; \
+	  mkdir -p "$$D" ; \
+	  for dep in $$(fury dependency list --raw --project $(ID) --module $${mod} | sed 's/\x1b\[[0-9;]*m//g' | sed 's/\//-/g'); do \
+	    PDEP=$$(echo $${dep} | cut -d'-' -f1) ; \
+	    export MOD_VER=$$(git ls-remote --tags --sort="v:refname" --refs git://github.com/propensive/$${PDEP} | tail -n1 | cut -d/ -f3 | sed 's/v//g') ; \
+	    cat .admin/tmpl/.dependency | MOD="$(ID)-$${dep}_$(SCALA)" envsubst | tr '¶' '\n' >> .dependencies ; \
+	  done ; \
+	  fury build run --output linear --dir "$$D" --module $$mod --project $(ID) ; \
+	  mv "$$D/$(ID)-$$mod.jar" "$$D/$$F.jar.tmp" ; \
+	  find $$D -name '*.jar' | xargs rm ; \
+	  mv "$$D/$$F.jar.tmp" "$$D/$$F.jar" ; \
+	  cat .admin/tmpl/pom.xml | DEPS=$$(cat .dependencies) envsubst > $$D/$$F.pom ; \
+	  gpg -ab $$D/$$F.pom ; \
+	  gpg -ab $$D/$$F.jar ; \
+	  echo $$(md5sum $$D/$$F.pom | head -c 32) > $$D/$$F.pom.md5 ; \
+	  echo $$(md5sum $$D/$$F.pom.asc | head -c 32) > $$D/$$F.pom.asc.md5 ; \
+	  echo $$(md5sum $$D/$$F.jar | head -c 32) > $$D/$$F.jar.md5 ; \
+	  echo $$(md5sum $$D/$$F.jar.asc | head -c 32) > $$D/$$F.jar.asc.md5 ; \
+	  echo $$(sha1sum $$D/$$F.pom | head -c 40) > $$D/$$F.pom.sha1 ; \
+	  echo $$(sha1sum $$D/$$F.pom.asc | head -c 40) > $$D/$$F.pom.asc.sha1 ; \
+	  echo $$(sha1sum $$D/$$F.jar | head -c 40) > $$D/$$F.jar.sha1 ; \
+	  echo $$(sha1sum $$D/$$F.jar.asc | head -c 40) > $$D/$$F.jar.asc.sha1 ; \
+	  rm -f .dependencies ; \
+	done
+	gsutil cp -r pub/* dir gs://repo.furore.dev/
 
 .header:
 	cat .admin/tmpl/.header | envsubst > .header
@@ -78,4 +118,4 @@ doc/images: doc/logo.svg
 	printf "." ; \
 	printf "done\n" ; \
 
-.PHONY: headers docs compile readme.md contributing.md .header doc/images
+.PHONY: headers docs compile readme.md contributing.md .header doc/images publish
