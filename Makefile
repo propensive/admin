@@ -4,6 +4,7 @@ LAUNCHER = Qmf4fcS6XzTq4zHwqgKDy5TbN94kMdXch9uA5qhTpnQzKY
 TITLE = $(shell cat doc/title)
 ID = $(shell cat doc/id)
 START = $(shell cat doc/start)
+STATUS = $(shell cat doc/status)
 BASICS = $(shell cat doc/basics | tr '\n' '¶')
 FEATURES = $(shell cat doc/features | tr '\n' '¶')
 INTRO = $(shell cat doc/intro)

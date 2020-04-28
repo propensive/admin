@@ -14,6 +14,16 @@ ${FEATURES}
 
 ${BASICS}
 
+## Status
+
+${TITLE} is classified as __${STATUS}__. Propensive defines the following five stability levels for open-source projects:
+
+- _embryonic_: for experimental or demonstrative purposes only, without guarantee of longevity
+- _fledgling_: of proven utility, seeking contributions, but liable to significant redesigns
+- _maturescent_: major design decisions broady settled, seeking probatory adoption and refinement of designs
+- _dependable_: production-ready, subject to controlled ongoing maintenance and enhancement; tagged as version `1.0` or later
+- _adamantine_: proven, reliable and production-ready, with no further breaking changes ever anticipated
+
 ## Availability
 
 ${TITLE}&rsquo;s source is available on GitHub, and may be built with [Fury](https://github.com/propensive/fury) by
