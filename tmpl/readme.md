@@ -2,6 +2,8 @@
 
 <img src="/doc/images/github.png" valign="middle">
 
+[![Build](https://github.com/propensive/${ID}/workflows/Build/badge.svg)](https://github.com/propensive/${ID}/actions)
+
 # ${TITLE}
 
 ${INTRO}
