@@ -9,6 +9,8 @@ BASICS = $(shell cat doc/basics | tr '\n' '¶')
 FEATURES = $(shell cat doc/features | tr '\n' '¶')
 INTRO = $(shell cat doc/intro)
 YEAR = $(shell date "+%y")
+VERSION = $(shell cat doc/version)
+MAVENID = $(shell cat doc/mavenid)
 THANKS = $(shell cat doc/thanks 2> /dev/null || echo '')
 VERSION = $(shell git describe --tags --abbrev=0 2> /dev/null)
 TMP = .tmp.scala

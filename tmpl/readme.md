@@ -35,7 +35,11 @@ or imported into an existing layer with,
 ```
 fury layer import -i propensive/${ID}
 ```
-A binary will be made available on Maven Central.
+A binary is available on Maven Central as `com.propensive:${ID}_<scala-version>:${VERSION}`. This may be added
+to an [sbt](https://www.scala-sbt.org/) build with:
+```
+libraryDependencies += "com.propensive" %% "${MAVENID}" % "${VERSION}"
+```
 
 ## Contributing
 
