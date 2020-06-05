@@ -1,6 +1,6 @@
 
 .EXPORT_ALL_VARIABLES:
-LAUNCHER = Qmf4fcS6XzTq4zHwqgKDy5TbN94kMdXch9uA5qhTpnQzKY
+LAUNCHER = QmSEbJh36sV66f46JVsT4dy4XQiKmgNEHTFCa6jeQ6NQj8
 TITLE = $(shell cat doc/title)
 ID = $(shell cat doc/id)
 START = $(shell cat doc/start)
