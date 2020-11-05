@@ -3,6 +3,7 @@
 LAUNCHER = QmSEbJh36sV66f46JVsT4dy4XQiKmgNEHTFCa6jeQ6NQj8
 TITLE = $(shell cat doc/title)
 ID = $(shell cat doc/id)
+MODULE = $(shell cat doc/module)
 START = $(shell cat doc/start)
 STATUS = $(shell cat doc/status)
 BASICS = $(shell cat doc/basics | tr '\n' '¶')
