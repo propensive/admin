@@ -106,9 +106,9 @@ pub/propensive:
 doc/images: doc/logo.svg
 	@printf "Generating images for $$image..." ; \
 	mkdir -p doc/images ; \
-	inkscape doc/logo.svg --export-png=doc/images/2400x2400@300dpi.png --export-dpi='300,300' --export-width=2400 --export-height=2400 --export-background-opacity=0 > /dev/null ; \
+	inkscape doc/logo.svg --export-filename=doc/images/2400x2400@300dpi.png --export-dpi='300' --export-width=2400 --export-height=2400 --export-background-opacity=0 > /dev/null ; \
 	printf "." ; \
-	inkscape doc/logo.svg --export-png=doc/images/1000x1000.png --export-dpi='96,96' --export-width=1000 --export-height=1000 --export-background-opacity=0 > /dev/null ; \
+	inkscape doc/logo.svg --export-filename=doc/images/1000x1000.png --export-dpi='96' --export-width=1000 --export-height=1000 --export-background-opacity=0 > /dev/null ; \
 	printf "." ; \
 	convert doc/images/1000x1000.png -resize 200x200 doc/images/200x200.png > /dev/null ; \
 	printf "." ; \
