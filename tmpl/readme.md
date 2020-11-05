@@ -4,7 +4,7 @@
 [<img src="https://img.shields.io/discord/633198088311537684?color=8899f7&label=DISCORD&style=for-the-badge" height="24">](https://discord.gg/CHCPjERybv)
 [<img src="https://img.shields.io/matrix/propensive.${ID}:matrix.org?label=MATRIX&color=0dbd8b&style=for-the-badge" height="24">](https://app.element.io/#/room/#propensive.${ID}:matrix.org)
 [<img src="https://img.shields.io/twitter/follow/propensive?color=%2300acee&label=TWITTER&style=for-the-badge" height="24">](https://twitter.com/propensive)
-[<img src="https://img.shields.io/maven-central/v/com.propensive/${ID}-${MODULE}_2.12?color=2465cd&style=for-the-badge" height="24">](https://search.maven.org/artifact/com.propensive/${ID}-${MODULE}_2.12)
+[<img src="https://img.shields.io/maven-central/v/com.propensive/${MAVENID}_2.12?color=2465cd&style=for-the-badge" height="24">](https://search.maven.org/artifact/com.propensive/${MAVENID}_2.12)
 [<img src="https://img.shields.io/badge/Vent-propensive%2F${ID}-f05662?style=for-the-badge" height="24">](https://vent.dev)
 
 # ${TITLE}
@@ -40,7 +40,7 @@ or imported into an existing layer with,
 ```
 fury layer import -i propensive/${ID}
 ```
-A binary is available on Maven Central as `com.propensive:${ID}-${MODULE}_<scala-version>:${VERSION}`. This may be added
+A binary is available on Maven Central as `com.propensive:${MAVENID}_<scala-version>:${VERSION}`. This may be added
 to an [sbt](https://www.scala-sbt.org/) build with:
 ```
 libraryDependencies += "com.propensive" %% "${MAVENID}" % "${VERSION}"
