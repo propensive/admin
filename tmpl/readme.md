@@ -1,11 +1,11 @@
 <img src="/doc/images/github.png" valign="middle">
 
-[<img src="https://img.shields.io/gitter/room/propensive/${ID}?color=f00762&style=for-the-badge" height="24">](https://gitter.im/propensive/${ID})
+[<img src="https://img.shields.io/badge/gitter-discuss%2F${ID}-f000762?style=for-the-badge" height="24">](https://gitter.im/propensive/${ID})
 [<img src="https://img.shields.io/discord/633198088311537684?color=8899f7&label=DISCORD&style=for-the-badge" height="24">](https://discord.gg/CHCPjERybv)
 [<img src="https://img.shields.io/matrix/propensive.${ID}:matrix.org?label=MATRIX&color=0dbd8b&style=for-the-badge" height="24">](https://app.element.io/#/room/#propensive.${ID}:matrix.org)
 [<img src="https://img.shields.io/twitter/follow/propensive?color=%2300acee&label=TWITTER&style=for-the-badge" height="24">](https://twitter.com/propensive)
 [<img src="https://img.shields.io/maven-central/v/com.propensive/${MAVENID}_2.12?color=2465cd&style=for-the-badge" height="24">](https://search.maven.org/artifact/com.propensive/${MAVENID}_2.12)
-[<img src="https://img.shields.io/badge/Vent-propensive%2F${ID}-f05662?style=for-the-badge" height="24">](https://vent.dev)
+[<img src="https://img.shields.io/badge/vent-propensive%2F${ID}-f05662?style=for-the-badge" height="24">](https://vent.dev)
 
 # ${TITLE}
 
