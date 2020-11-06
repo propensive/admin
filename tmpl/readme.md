@@ -1,4 +1,4 @@
-[<img alt="GitHub Workflow" src="https://img.shields.io/github/workflow/status/propensive/${ID}/Build/master?style=for-the-badge" height="24">](https://github.com/propensive/${ID}/actions)
+[<img alt="GitHub Workflow" src="https://img.shields.io/github/workflow/status/propensive/${ID}/Build/main?style=for-the-badge" height="24">](https://github.com/propensive/${ID}/actions)
 [<img src="https://img.shields.io/badge/gitter-discuss-f00762?style=for-the-badge" height="24">](https://gitter.im/propensive/${ID})
 [<img src="https://img.shields.io/discord/633198088311537684?color=8899f7&label=DISCORD&style=for-the-badge" height="24">](https://discord.gg/CHCPjERybv)
 [<img src="https://img.shields.io/matrix/propensive.${ID}:matrix.org?label=MATRIX&color=0dbd8b&style=for-the-badge" height="24">](https://app.element.io/#/room/#propensive.${ID}:matrix.org)
