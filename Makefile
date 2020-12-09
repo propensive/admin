@@ -1,6 +1,6 @@
 
 .EXPORT_ALL_VARIABLES:
-LAUNCHER = QmSEbJh36sV66f46JVsT4dy4XQiKmgNEHTFCa6jeQ6NQj8
+LAUNCHER = QmfU9PPM5g1jJ8A1U91RNRzyfsptQpHgzV6Bd5n8wmS4t4
 TITLE = $(shell cat doc/title)
 ID = $(shell cat doc/id)
 MODULE = $(shell cat doc/module)
@@ -35,19 +35,7 @@ fury:
 	ipfs cat $(LAUNCHER) > fury
 	chmod +x fury
 
-doc/images/furore.png:
-	mkdir -p doc/images
-	cp .admin/images/furore.png doc/images/
-
-doc/images/riotim.png:
-	mkdir -p doc/images
-	cp .admin/images/riotim.png doc/images/
-
-doc/images/mavencentral.png:
-	mkdir -p doc/images
-	cp .admin/images/mavencentral.png doc/images/
-
-readme.md: doc/images doc/images/furore.png doc/images/riotim.png doc/images/mavencentral.png
+readme.md: doc/images
 	cat .admin/tmpl/readme.md | envsubst | tr '¶' '\n' > readme.md
 
 contributing.md:
