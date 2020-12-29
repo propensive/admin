@@ -30,6 +30,7 @@ clean:
 	rm -f readme.md license.md contributing.md fury .gitignore .github/workflows/main.yml
 
 .github/workflows/main.yml:
+	mkdir -p .github/workflows
 	cp .admin/tmpl/github.yml .github/workflows/main.yml
 fury:
 	ipfs cat $(LAUNCHER) > fury
